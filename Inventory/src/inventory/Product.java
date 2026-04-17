@@ -1,4 +1,4 @@
-package inventory;
+package inventory; //constructor
 
 public class Product {
     private String productName;
@@ -10,4 +10,26 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
     }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setPrice (double price){
+        this.price = price;
+    }
+
+    public void setQuantity (int quantity){
+        this.quantity = quantity;
+    }
 }
+
+
