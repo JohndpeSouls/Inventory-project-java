@@ -9,7 +9,8 @@ public class MainInventory {
 	
 	public static void main(String[] args) {
 		InventoryManager manager = new InventoryManager();
-		SaveItem saveItem = new SaveItem();
+		SaveItem save = new SaveItem();
+		calculate compute = new calculate();
 		Scanner scan = new Scanner(System.in);
 		double total = 0;
 		int exit = 1;
@@ -67,16 +68,16 @@ public class MainInventory {
 					break;
 					
 				case 4:
-					total = manager.totalValue();
+					total = compute.totalValue(manager.getInventory(),manager.getCount());
 					System.out.println("\n Total value of items " + total );
 					break;
 					
 				case 5:
-					manager.lowStock();
+					compute.lowStock(manager.getInventory(), manager.getCount());
 					break;
 					
 				case 6:
-					manager.saveData(filePath);
+					save.saveData(filePath, manager.getInventory(),manager.getCount());
 					break;
 					
 				case 7:
@@ -89,8 +90,6 @@ public class MainInventory {
 			}
 			
 		}
-		
-		
 		
 		scan.close();
 
