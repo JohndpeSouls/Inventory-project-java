@@ -58,7 +58,7 @@ public class InventoryManager {
 
         for (int i = 0; i < count; i++) { 
             if (inventory[i].getQuantity() < 10) {
-                System.out.print(inventory[i].getProductName() + " " + inventory[i].getQuantity() + ", ");
+                System.out.print(inventory[i].getProductName() + " Quantity: (" + inventory[i].getQuantity() + ") ");
             }
         }
     }
