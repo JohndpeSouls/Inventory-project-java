@@ -1,8 +1,5 @@
 package inventory;
 
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class InventoryManager {
@@ -16,6 +13,7 @@ public class InventoryManager {
         inventory[count] = product;
         count++;
     }
+    
     
     public Product[] getInventory() {
         return inventory;
@@ -58,7 +56,7 @@ public class InventoryManager {
 
         for (int i = 0; i < count; i++) { 
             if (inventory[i].getQuantity() < 10) {
-                System.out.print("(" + inventory[i].getProductName() + ") Quantity: " + inventory[i].getQuantity() + "\n");
+                System.out.print(inventory[i].getProductName() + " " + inventory[i].getQuantity() + ", ");
             }
         }
     }
@@ -73,25 +71,8 @@ public class InventoryManager {
         return total;
     }
     
-	public void saveData(String filePath)
-	{
-		try 
-		{
-			FileWriter saveText = new FileWriter(filePath);
-			
-			for(int i = 0; i < count;i++) 
-			{
-				Product storage = inventory[i];
-				
-				saveText.write(storage.getProductName() + ":" + storage.getPrice() + ":" + storage.getQuantity() + "\n");
-			}
-			
-			System.out.println("Entry Saved");
-			saveText.close();
-		} catch (IOException e) {
-			System.out.println("Error, cannot save. File path error");
-		}
-		
-	}
+
+    
+
 
 }
