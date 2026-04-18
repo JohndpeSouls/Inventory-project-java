@@ -1,6 +1,8 @@
 package inventory;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class InventoryManager {
@@ -13,6 +15,14 @@ public class InventoryManager {
         Product product = new Product(name,price,quantity);
         inventory[count] = product;
         count++;
+    }
+    
+    public Product[] getInventory() {
+        return inventory;
+    }
+
+    public int getCount() {
+        return count;
     }
 
     public void updateStock(String name){
@@ -31,8 +41,8 @@ public class InventoryManager {
     }
 
     public void viewProducts(){
-        System.out.println("====Current Inventory====");
-        System.out.printf("Name               Quantity      Price\n", 0);
+        System.out.println("\n====Current Inventory====");
+        System.out.printf("Name               Price      Quantity\n", 0);
 
         for (int i = 0; i < count; i++) {
             String productName = inventory[i].getProductName();
@@ -42,7 +52,7 @@ public class InventoryManager {
         }
         System.out.println("\n");
     }
-    
+
     public void lowStock() {
         System.out.println("Low on Stock: ");
 
@@ -62,4 +72,26 @@ public class InventoryManager {
         }
         return total;
     }
+    
+	public void saveData(String filePath)
+	{
+		try 
+		{
+			FileWriter saveText = new FileWriter(filePath);
+			
+			for(int i = 0; i < count;i++) 
+			{
+				Product storage = inventory[i];
+				
+				saveText.write(storage.getProductName() + ":" + storage.getPrice() + ":" + storage.getQuantity() + "\n");
+			}
+			
+			System.out.println("Entry Saved");
+			saveText.close();
+		} catch (IOException e) {
+			System.out.println("Error, cannot save. File path error");
+		}
+		
+	}
+
 }
