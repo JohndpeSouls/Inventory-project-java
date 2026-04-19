@@ -59,9 +59,4 @@ public class InventoryManager {
         System.out.println("\n");
     }
 
-    
-
-    
-
-
 }
