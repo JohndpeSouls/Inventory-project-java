@@ -9,7 +9,15 @@ public class InventoryManager {
     private int count = 0;
 
     public void addProduct(String name, double price, int quantity){
-        Product product = new Product(name,price,quantity);
+
+        for (int i = 0; i < count; i++) {
+            if (inventory[i].getProductName().equalsIgnoreCase(name)) {
+                System.out.println("Product already exists. Not added.");
+                return; // force exit method
+            }
+        }
+
+        Product product = new Product(name, price, quantity);
         inventory[count] = product;
         count++;
     }
