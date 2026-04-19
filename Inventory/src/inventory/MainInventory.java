@@ -14,6 +14,7 @@ public class MainInventory {
 		Scanner scan = new Scanner(System.in);
 		double total = 0;
 		int exit = 1;
+		save.loadData("src/inventory/stocks.txt", manager);
 		
 		System.out.println(" __          __  _                            _          _____           _ _             _                   _____       __     \r\n"
 				+ " \\ \\        / / | |                          | |        |_   _|         | (_)           | |                 / ____|     / _|    \r\n"
