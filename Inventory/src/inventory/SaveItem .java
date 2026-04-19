@@ -1,4 +1,5 @@
 package inventory;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,15 +29,20 @@ class SaveItem {
 		}
 		
 	}
+	
 	public void loadData(String filePath, InventoryManager manager) {
-        int count = 0;
 
-    try (Scanner scanner = new Scanner(new File("src/inventory/stocks.txt"))) {
+    try (Scanner scanner = new Scanner(new File(filePath))) {
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] parts = line.split(":");
-
+            
+            if (line.trim().isEmpty()) // assumes empty txt file
+            {
+                continue; 
+            }
+            
             String productName = parts[0];
             double price = Double.parseDouble(parts[1]);
             int productQuantity = Integer.parseInt(parts[2]);
@@ -46,14 +52,7 @@ class SaveItem {
  
     catch (FileNotFoundException e) {
     }
-
+    	System.out.println("Text file not found stocks.txt,");
     }
 	
 }
-
-/*
- *         Item[] items = {
-            new Item("banana", 2, 5),
-            new Item("apple", 3, 10)
-        };
- * */
